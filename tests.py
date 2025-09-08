@@ -1,8 +1,12 @@
-from functions.write_file import write_file 
+from functions.run_python_file import run_python_file 
 
-res = write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum")
+res = run_python_file("calculator", "main.py")
 print(res)
-res = write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet")
+res = run_python_file("calculator", "main.py", ["3 + 5"])
 print(res)
-res = write_file("calculator", "/tmp/temp.txt", "this should not be allowed")
+res = run_python_file("calculator", "tests.py")
+print(res)
+res = run_python_file("calculator", "../main.py")
+print(res)
+res = run_python_file("calculator", "nonexistent.py")
 print(res)
