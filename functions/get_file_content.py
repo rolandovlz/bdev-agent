@@ -1,5 +1,5 @@
 import os
-MAX_CHARS = 10000
+from config import MAX_CHARS
 
 def get_file_content(working_directory, file_path):
     abs_wd = os.path.abspath(working_directory)
@@ -14,7 +14,7 @@ def get_file_content(working_directory, file_path):
         with open(target_file, "r") as f:
             file_content_string = f.read(MAX_CHARS)
             if len(file_content_string) == MAX_CHARS:
-                file_content_string += f'[...File "{file_path}" truncated at 10000 characters]'
+                file_content_string += f'[...File "{file_path}" truncated at {MAX_CHARS} characters]'
             return file_content_string
     except Exception as e:
         return f"Error: {e}"

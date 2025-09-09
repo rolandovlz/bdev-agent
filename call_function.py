@@ -4,6 +4,7 @@ from functions.get_files_info import get_files_info
 from functions.write_file import write_file
 from functions.run_python_file import run_python_file
 from functions.schemas import *
+from config import WORKING_DIR
 
 available_functions = types.Tool(
     function_declarations=[
@@ -25,13 +26,13 @@ def call_function(function_call_part, verbose=False):
     res = None
     match (function_call_part.name):
         case "get_files_info":
-            res = get_files_info("./calculator", **args)
+            res = get_files_info(WORKING_DIR, **args)
         case "get_file_content":
-            res = get_file_content("./calculator", **args)
+            res = get_file_content(WORKING_DIR, **args)
         case "write_file":
-            res = write_file("./calculator", **args)
+            res = write_file(WORKING_DIR, **args)
         case "run_python_file":
-            res = run_python_file("./calculator", **args)
+            res = run_python_file(WORKING_DIR, **args)
         case _:
             return types.Content(
                 role="tool",
